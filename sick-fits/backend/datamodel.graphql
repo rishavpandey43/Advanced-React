@@ -1,5 +1,18 @@
 type User {
-  id: ID! @id
+  id: ID! @id @unique
   name: String!
   email: String!
+}
+
+type Item {
+  id: ID! @id @unique
+  title: String!
+  description: String!
+  image: String
+  largeImage: String
+  price: Int!
+  # DateTime is not standard type in graphql, it's given by prisma. If using graphql without prisma, needs to create own type.
+  # createAt: DateTime!
+  # updatedAt: DateTime!
+  # user: User!
 }
