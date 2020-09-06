@@ -1,14 +1,12 @@
-const Query = {
-  async items(parent, args, ctx, info) {
-    const items = await ctx.db.query.items();
-    return items;
-  }
+const { forwardTo } = require('prisma-binding');
 
-  // dogs(parent, args, ctx, info) {
-  //   // never store in memory at global scope, because every time server restart, you'll loose everything
-  //   global.dogs = global.dogs || [];
-  //   return global.dogs;
-  // }
+const Query = {
+  items: forwardTo('db'),
+  item: forwardTo('db'),
+  // async items(parent, args, ctx, info) {
+  //   const items = await ctx.db.query.items();
+  //   return items;
+  // },
 };
 
 module.exports = Query;
